@@ -298,6 +298,9 @@ if [[ ! "$BUILD_DIR" == "/app" ]]; then
   deep-cp /app/.heroku/src "$BUILD_DIR/.heroku/src"
 fi
 
+# Setup wger project
+invoke create-settings  --settings-path ./settings.py --database-path ./database.sqlite
+invoke bootstrap-wger --settings-path ./settings.py --no-start-server
 
 # Django collectstatic support.
 # The buildpack automatically runs collectstatic for Django applications.
